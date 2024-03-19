@@ -1,11 +1,10 @@
-import "dart:convert";
+import 'dart:convert';
 
-import "package:curso_flutter/infra/request_helper.dart";
-import "package:flutter/services.dart";
+import 'package:curso_flutter/infra/request_helper.dart';
+import 'package:flutter/services.dart';
 
 abstract class IloginRepo {
-  /// Retorno Sera TRUE caso email e senha  digitados forem validos
-
+  /// Retorno será TRUE caso o email e senha digitados são válidos
   Future<bool> autenticar(String email, String senha);
 }
 
@@ -24,7 +23,7 @@ class LoginRepoAPI implements IloginRepo {
   }
 }
 
-class LoginInMemory implements IloginRepo {
+class LoginRepoInMemory implements IloginRepo {
   @override
   Future<bool> autenticar(String email, String senha) async {
     String strAutenticar =

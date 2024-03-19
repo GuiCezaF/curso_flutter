@@ -4,7 +4,7 @@ import 'package:curso_flutter/ui/pages/login/page_login.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-  await iniciarRepositorio();
+  await iniciarServicos();
 
   runApp(const MyApp());
 }
