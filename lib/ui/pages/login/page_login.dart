@@ -25,20 +25,46 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Column(
-          children: [
-            const FlutterLogo(),
-            CampoTexto(controller: controller.edtEmail),
-            CampoTexto(controller: controller.edtSenha),
-            Botao(
-                titulo: "Autenticar",
-                onClick: () async {
-                  await controller.onClickAutenticar();
-                })
-          ],
+        body: SafeArea(
+      child: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(40),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(20),
+                child: FlutterLogo(
+                  size: 200,
+                ),
+              ),
+              const Text(
+                'E-mail',
+                style: TextStyle(color: Colors.black),
+              ),
+              CampoTexto(controller: controller.edtEmail),
+              const SizedBox(
+                height: 40,
+              ),
+              const Text(
+                'Senha',
+                style: TextStyle(color: Colors.black),
+              ),
+              CampoTexto(controller: controller.edtSenha),
+              const SizedBox(
+                height: 40,
+              ),
+              Botao(
+                  titulo: "Autenticar",
+                  onClick: () async {
+                    await controller.onClickAutenticar();
+                  })
+            ],
+          ),
         ),
       ),
-    );
+    ));
   }
 }
