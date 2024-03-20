@@ -1,14 +1,18 @@
 import 'dart:convert';
 
+import 'package:curso_flutter/infra/extensions.dart';
+
 class Cliente {
   String nomeRazao;
   String nomeFantasia;
   String cpfCnpj;
+  bool ativo;
 
   Cliente.fromJsonObject(Map<String, dynamic> jsonObject)
-      : nomeRazao = jsonObject['nomeRazao'],
-        nomeFantasia = jsonObject['nomeFantasia'],
-        cpfCnpj = jsonObject['cpfCnpj'];
+      : nomeRazao = jsonObject.asString('nomeRazao'),
+        nomeFantasia = jsonObject.asString('nomeFantasia'),
+        ativo = jsonObject.asBool('ativo'),
+        cpfCnpj = jsonObject.asString('cpfCnpj');
 
   static List<Cliente> fromJson(String jsonStr) {
     List<Cliente> lista = [];
