@@ -15,7 +15,7 @@ class LoginRepoAPI implements IloginRepo {
     var params = {"email": email, "senha": senha};
 
     var response =
-        await requestGET('/ws/curso_flutter/autenticar', params: params);
+        await requestGET('/ws/curso-flutter/autenticar', params: params);
 
     var jsonAutenticar = jsonDecode(response.body);
 

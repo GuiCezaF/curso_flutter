@@ -1,0 +1,32 @@
+[
+  {
+    "nomeRazao": "Comercio de carnes",
+    "nomeFantasia": "João carnes e cia",
+    "cpfCnpj": null,
+    "ativo": 1
+  },
+  {
+    "nomeRazao": "Comercio de bebidas",
+    "nomeFantasia": "João bebidas e cia",
+    "cpfCnpj": "01.222.009/0001-21",
+    "ativo": 1
+  },
+  {
+    "nomeRazao": "Comercio de alimentos",
+    "nomeFantasia": null,
+    "cpfCnpj": "02.222.322/0001-21",
+    "ativo": true
+  },
+  {
+    "nomeRazao": "Comercio de carros",
+    "nomeFantasia": "João carros e cia",
+    "cpfCnpj": "99.311.323/0001-32",
+    "ativo": "0"
+  },
+  {
+    "nomeRazao": "Comercio de frutas",
+    "nomeFantasia": "João frutas e cia",
+    "cpfCnpj": "02.229.129/0001-91",
+    "ativo": false
+  }
+]
