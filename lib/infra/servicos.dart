@@ -1,6 +1,7 @@
 import 'package:curso_flutter/domain/cliente/repo_cliente.dart';
 import 'package:curso_flutter/domain/login/repo_login.dart';
 import 'package:curso_flutter/infra/dependencia.dart';
+import 'package:get_storage/get_storage.dart';
 
 enum TipoRepositorio {
   inMemory,
@@ -8,6 +9,8 @@ enum TipoRepositorio {
 }
 
 Future iniciarServicos() async {
+  await GetStorage.init();
+
   TipoRepositorio tipoRepositorio = TipoRepositorio.inMemory;
 
   switch (tipoRepositorio) {
@@ -21,11 +24,11 @@ Future iniciarServicos() async {
 }
 
 void registrarDependeciasApi() {
-  Dependencia.adicionarOuSubstituir<IloginRepo>(LoginRepoAPI());
+  Dependencia.adicionarOuSubstituir<ILoginRepo>(LoginRepoAPI());
   Dependencia.adicionarOuSubstituir<IClienteRepo>(ClienteRepoAPI());
 }
 
 void registrarDependeciasInMemory() {
-  Dependencia.adicionarOuSubstituir<IloginRepo>(LoginRepoInMemory());
+  Dependencia.adicionarOuSubstituir<ILoginRepo>(LoginRepoInMemory());
   Dependencia.adicionarOuSubstituir<IClienteRepo>(ClienteRepoInMemory());
 }

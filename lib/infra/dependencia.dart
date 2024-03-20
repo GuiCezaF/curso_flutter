@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 
-
 class Dependencia {
   static S salvarPermanente<S>(S dependency) {
     return Get.put<S>(dependency, permanent: true);
