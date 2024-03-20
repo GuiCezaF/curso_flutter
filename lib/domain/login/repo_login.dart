@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:curso_flutter/infra/request_helper.dart';
 import 'package:flutter/services.dart';
 
-abstract class IloginRepo {
+abstract class ILoginRepo {
   /// Retorno será TRUE caso o email e senha digitados são válidos
   Future<bool> autenticar(String email, String senha);
 }
 
-class LoginRepoAPI implements IloginRepo {
+class LoginRepoAPI implements ILoginRepo {
   @override
   Future<bool> autenticar(String email, String senha) async {
     /// Monta o JSON com os parâmetros para enviar para a API
@@ -23,7 +23,7 @@ class LoginRepoAPI implements IloginRepo {
   }
 }
 
-class LoginRepoInMemory implements IloginRepo {
+class LoginRepoInMemory implements ILoginRepo {
   @override
   Future<bool> autenticar(String email, String senha) async {
     String strAutenticar =

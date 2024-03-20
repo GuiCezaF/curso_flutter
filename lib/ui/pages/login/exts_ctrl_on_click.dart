@@ -1,31 +1,50 @@
 import 'package:curso_flutter/domain/login/repo_login.dart';
 import 'package:curso_flutter/domain/login/uc_autenticar_login.dart';
 import 'package:curso_flutter/infra/dependencia.dart';
+import 'package:curso_flutter/ui/pages/listagem_clientes/page_listagem_clientes.dart';
 import 'package:curso_flutter/ui/pages/login/ctrl_login.dart';
+import 'package:curso_flutter/ui/widgets/utils.dart';
+import 'package:flutter/material.dart';
 
 extension OnClick on LoginController {
-  Future onClickAutenticar() async {
+  Future onClickAutenticar(BuildContext context) async {
     try {
       if (edtEmail.text.isEmpty) {
-        throw 'O campo E-mail precisa ser preenchido';
+        throw ECampoEmailInvalido();
       }
+
       if (edtSenha.text.isEmpty) {
-        throw 'O campo Senha precisa ser preenchido';
+        throw ECampoSenhaInvalido();
       }
 
       bool isAutorizado = await UcAutenticarLogin(
-              Dependencia.obter<IloginRepo>(), edtEmail.text, edtSenha.text)
+              Dependencia.obter<ILoginRepo>(), edtEmail.text, edtSenha.text)
           .executar();
 
       if (isAutorizado) {
-        //TODO abrir tela de listagem de clientes
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const ListagemClientesPage()));
       } else {
-        throw 'Esse email não esta autorizado';
+        throw 'Este email não está autorizado.';
       }
     } catch (e) {
-      print(e);
+      showDialogErro(context, e.toString());
     }
   }
 
-  Future onClickRecuperaEmail() async {}
+  Future onClickRecuperarEmail() async {}
+}
+
+class ECampoEmailInvalido implements Exception {
+  @override
+  String toString() {
+    return 'O campo e-mail precisa ser preenchido.';
+  }
+}
+
+class ECampoSenhaInvalido implements Exception {
+  @override
+  String toString() {
+    return 'O campo senha precisa ser preenchido.';
+  }
 }
